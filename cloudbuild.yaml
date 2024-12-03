@@ -1,0 +1,43 @@
+steps:
+# Step 1: Generate Access Token
+- name: "gcr.io/cloud-builders/gcloud"
+  entrypoint: bash
+  args:
+    - "-c"
+    - |
+      export ACCESS_TOKEN=$(gcloud auth print-access-token)
+      echo $ACCESS_TOKEN > /workspace/access_token.txt
+
+# Step 2: Install Maven dependencies
+- name: maven
+  entrypoint: mvn
+  args: ["install"]
+
+# Step 3: Deploy Configurations
+- name: maven
+  entrypoint: mvn
+  args:
+    - install
+    - "-Ptest"
+    - "-Dorg=$_ORG"
+    - "-Denv=$_ENV"
+    - "-Dbearer=$(cat /workspace/access_token.txt)"
+    - "-Dapigee.config.options=update"
+  # dir: "apigee/config"
+
+# Step 4: Deploy API Proxies
+- name: maven
+  entrypoint: mvn
+  args:
+    - install
+    - "-Ptest"
+    - "-Dorg=$_ORG"
+    - "-Denv=$_ENV"
+    - "-Dbearer=$(cat /workspace/access_token.txt)"
+  # dir: "apigee/proxies/Mock-v1"
+
+substitutions:
+  _ORG: "tw-rd-ca-paggie-chen-394703"
+  _ENV: "eval"
+
+timeout: "1200s"
