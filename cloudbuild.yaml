@@ -9,7 +9,7 @@ steps:
   - name: 'bash'
     script: |
       #!/usr/bin/env bash
-      echo "$$SA" > /workspace/sa-key.json
+      printf "%s" "$$SA" > /workspace/sa-key.json
     secretEnv: ['SA']
 
 
