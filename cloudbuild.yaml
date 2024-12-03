@@ -6,32 +6,24 @@ steps:
     entrypoint: "git"
     args: ["clone", "https://github.com/PaggieChen/apigee-cicd-demo.git"]
 
-  # Step 2: Change directory to the project folder
-  - name: "gcr.io/cloud-builders/mvn"
-    id: change-dir
-    entrypoint: "bash"
-    args:
-      - "-c"
-      - |
-        cd /workspace/apigee-cicd-demo && mvn clean install
-  
-# Step 3: Install Maven dependencies
+  # Step 2: Build the project using Maven
   - name: maven
-    id: install-maven
-    entrypoint: mvn
-    args: ["install"]
+    id: build-project
+    dir: "apigee-cicd-demo" # Ensure we are in the correct directory
+    entrypoint: "mvn"
+    args: ["clean", "install"]
 
-  # Step 4: Deploy Configurations
+  # Step 3: Deploy Configurations
   - name: maven
     id: deploy
-    entrypoint: mvn
+    dir: "apigee-cicd-demo" # Ensure we are in the correct directory
+    entrypoint: "mvn"
     args:
       - install
       - "-Ptest"
       - "-Dorg=$_ORG"
       - "-Denv=$_ENV"
       - "-Dapigee.config.options=update"
-    # dir: "apigee/config"
 
 substitutions:
   _ORG: "tw-rd-ca-paggie-chen-394703"
