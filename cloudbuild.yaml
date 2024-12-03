@@ -21,4 +21,6 @@ substitutions:
   _ORG: "tw-rd-ca-paggie-chen-394703"
   _ENV: "eval"
 
+logsBucket: "gs://paggie-test-bucket"
+
 timeout: "1200s"
