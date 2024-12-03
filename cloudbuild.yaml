@@ -24,7 +24,6 @@ steps:
       - "-Dorg=$_ORG"
       - "-Denv=$_ENV"
       - "-Dapigee.config.options=update"
-      - "-Dfile=shared-pom.xmo"
 
 substitutions:
   _ORG: "tw-rd-ca-paggie-chen-394703"
