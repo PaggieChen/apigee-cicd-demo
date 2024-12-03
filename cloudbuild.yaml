@@ -21,13 +21,13 @@ steps:
     args:
       - install
       - "-Ptest"
-      - "-Dorg=$_ORG"
-      - "-Denv=$_ENV"
+      - "-Dorg=tw-rd-ca-paggie-chen-394703"
+      - "-Denv=eval"
       - "-Dapigee.config.options=update"
 
-substitutions:
-  _ORG: "tw-rd-ca-paggie-chen-394703"
-  _ENV: "eval"
+# substitutions:
+#   _ORG: "tw-rd-ca-paggie-chen-394703"
+#   _ENV: "eval"
 
 logsBucket: "gs://paggie-test-bucket"
 
