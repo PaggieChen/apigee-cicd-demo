@@ -21,7 +21,7 @@ steps:
     - "-Ptest"
     - "-Dorg=$_ORG"
     - "-Denv=$_ENV"
-    - "-Dbearer=$(cat /workspace/access_token.txt)"
+    - "-Dbearer=$ACCESS_TOKEN"
     - "-Dapigee.config.options=update"
   # dir: "apigee/config"
 
@@ -33,7 +33,7 @@ steps:
     - "-Ptest"
     - "-Dorg=$_ORG"
     - "-Denv=$_ENV"
-    - "-Dbearer=$(cat /workspace/access_token.txt)"
+    - "-Dbearer=$ACCESS_TOKEN"
   # dir: "apigee/proxies/Mock-v1"
 
 substitutions:
