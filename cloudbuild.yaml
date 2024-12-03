@@ -16,14 +16,14 @@ steps:
   - name: maven
     id: deploy
     dir: "apigee-cicd-demo/Mock-v1" # Ensure we are in the correct directory
-    entrypoint: "mvn"
-    args: ['install','-Ptest','-Dorg=tw-rd-ca-paggie-chen-394703','-Denv=eval','-Dapigee.config.options=update','-Dfile=$$SA']
+    entrypoint: "bash"
+    args: ['-c', 'mvn install -Ptest -Dorg=tw-rd-ca-paggie-chen-394703 -Denv=eval -Dapigee.config.options=update -Dfile=$$SA']
     secretEnv: ['SA']
 
 
 availableSecrets:
   secretManager:
-  - versionName: projects/tw-rd-ca-paggie-chen-394703/secrets/apigee-secret/versions/1
+  - versionName: projects/609801163603/secrets/apigee-secret/versions/1
     env: 'SA'
 
 
