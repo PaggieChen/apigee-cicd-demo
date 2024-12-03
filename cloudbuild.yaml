@@ -1,37 +1,24 @@
 steps:
-  # Step 1: Retrieve the service account key from Secret Manager and authenticate
-  - name: "gcr.io/cloud-builders/gcloud"
-    entrypoint: bash
-    args:
-      - "-c"
-      - |
-        # Fetch the service account key from Secret Manager and store it locally
-        gcloud secrets versions access latest --secret="apigee-secret" > /workspace/service-account-key.json
-        # Set the environment variable for Google Cloud authentication
-        export GOOGLE_APPLICATION_CREDENTIALS="/workspace/service-account-key.json"
-        # Authenticate using the service account key
-        gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
-        echo "Service account authenticated successfully."
 
-  # Step 2: Your build process (e.g., Maven build)
-  - name: maven
-    entrypoint: bash
-    args:
-      - "-c"
-      - |
-        mvn install \
-          -Ptest \
-          -Dorg=${_ORG} \
-          -Denv=${_ENV} \
-          -Dbearer=$(gcloud auth print-access-token) \
-          -Dapigee.config.options=update
-    dir: "apigee/config"
+# Step 1: Install Maven dependencies
+- name: maven
+  entrypoint: mvn
+  args: ["install"]
 
-# Cloud Build substitutions
+# Step 2: Deploy Configurations
+- name: maven
+  entrypoint: mvn
+  args:
+    - install
+    - "-Ptest"
+    - "-Dorg=$_ORG"
+    - "-Denv=$_ENV"
+    - "-Dapigee.config.options=update"
+  # dir: "apigee/config"
+
+
 substitutions:
   _ORG: "tw-rd-ca-paggie-chen-394703"
   _ENV: "eval"
 
-# Logging and timeout configurations
-logsBucket: "gs://paggie-test-bucket"
 timeout: "1200s"
