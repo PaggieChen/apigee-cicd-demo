@@ -5,28 +5,18 @@ steps:
     entrypoint: "git"
     args: ["clone", "https://github.com/PaggieChen/apigee-cicd-demo.git"]
 
-  # # Step 2: Build the project using Maven
-  # - name: maven
-  #   id: build-project
-  #   dir: "apigee-cicd-demo/Mock-v1" # Ensure we are in the correct directory
-  #   entrypoint: "mvn"
-  #   args: ["clean", "install"]
-
-  # Step 2: Deploy Configurations
+  # Step 2: Deploy Configurations using Maven
   - name: maven
     id: deploy
-    dir: "apigee-cicd-demo/Mock-v1" # Ensure we are in the correct directory
-    entrypoint: "mvn"
-    args: ["install","-Ptest","-Dorg=tw-rd-ca-paggie-chen-394703","-Denv=eval","-Dapigee.config.options=update","-Dfile=$$SA"]
-    secretEnv: ["SA"]
-
+    dir: "apigee-cicd-demo/Mock-v1"  # Ensure we are in the correct directory
+    entrypoint: "bash"
+    args: ['-c', 'mvn install -Ptest -Dorg=tw-rd-ca-paggie-chen-394703 -Denv=eval -Dapigee.config.options=update -Dfile=$$SA']
+    secretEnv: ['SA']
 
 availableSecrets:
   secretManager:
-  - versionName: projects/tw-rd-ca-paggie-chen-394703/secrets/apigee-secret/versions/1
+  - versionName: projects/609801163603/secrets/apigee-secret/versions/1
     env: 'SA'
-
-
 
 logsBucket: "gs://paggie-test-bucket"
 
