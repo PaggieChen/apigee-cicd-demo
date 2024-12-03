@@ -41,3 +41,6 @@ substitutions:
   _ENV: "eval"
 
 timeout: "1200s"
+
+options:
+  logging: CLOUD_LOGGING_ONLY
