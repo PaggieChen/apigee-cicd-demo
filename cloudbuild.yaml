@@ -9,14 +9,14 @@ steps:
   # Step 2: Build the project using Maven
   - name: maven
     id: build-project
-    dir: "apigee-cicd-demo" # Ensure we are in the correct directory
+    dir: "apigee-cicd-demo/Mock-v1" # Ensure we are in the correct directory
     entrypoint: "mvn"
     args: ["clean", "install"]
 
   # Step 3: Deploy Configurations
   - name: maven
     id: deploy
-    dir: "apigee-cicd-demo" # Ensure we are in the correct directory
+    dir: "apigee-cicd-demo/Mock-v1" # Ensure we are in the correct directory
     entrypoint: "mvn"
     args:
       - install
@@ -24,6 +24,7 @@ steps:
       - "-Dorg=$_ORG"
       - "-Denv=$_ENV"
       - "-Dapigee.config.options=update"
+      - "-Dfile=shared-pom.xmo"
 
 substitutions:
   _ORG: "tw-rd-ca-paggie-chen-394703"
