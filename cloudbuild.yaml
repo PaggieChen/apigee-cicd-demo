@@ -1,5 +1,5 @@
 steps:
-
+  - name: ""
   # Step 1: Clone the repository
   - name: "gcr.io/cloud-builders/git"
     id: clone-repo
@@ -18,7 +18,15 @@ steps:
     id: deploy
     dir: "apigee-cicd-demo/Mock-v1" # Ensure we are in the correct directory
     entrypoint: "mvn"
-    args: ["install","-Ptest","-Dorg=tw-rd-ca-paggie-chen-394703","-Denv=eval","-Dapigee.config.options=update"]
+    args: ['install','-Ptest','-Dorg=tw-rd-ca-paggie-chen-394703','-Denv=eval','-Dapigee.config.options=update','-Dfile=$$SA']
+    secretEnv: ['SA']
+
+
+availableSecrets:
+  secretManager:
+  - versionName: projects/tw-rd-ca-paggie-chen-394703/secrets/apigee-secret/versions/1
+    env: 'SA'
+
 
 # substitutions:
 #   _ORG: "tw-rd-ca-paggie-chen-394703"
