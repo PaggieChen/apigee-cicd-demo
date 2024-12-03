@@ -6,14 +6,14 @@ steps:
     entrypoint: "git"
     args: ["clone", "https://github.com/PaggieChen/apigee-cicd-demo.git"]
 
-  # Step 2: Build the project using Maven
-  - name: maven
-    id: build-project
-    dir: "apigee-cicd-demo/Mock-v1" # Ensure we are in the correct directory
-    entrypoint: "mvn"
-    args: ["clean", "install"]
+  # # Step 2: Build the project using Maven
+  # - name: maven
+  #   id: build-project
+  #   dir: "apigee-cicd-demo/Mock-v1" # Ensure we are in the correct directory
+  #   entrypoint: "mvn"
+  #   args: ["clean", "install"]
 
-  # Step 3: Deploy Configurations
+  # Step 2: Deploy Configurations
   - name: maven
     id: deploy
     dir: "apigee-cicd-demo/Mock-v1" # Ensure we are in the correct directory
