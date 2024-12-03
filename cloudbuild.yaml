@@ -1,5 +1,4 @@
 steps:
-  - name: ""
   # Step 1: Clone the repository
   - name: "gcr.io/cloud-builders/git"
     id: clone-repo
