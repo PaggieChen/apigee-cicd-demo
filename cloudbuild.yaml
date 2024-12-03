@@ -5,19 +5,15 @@ steps:
     entrypoint: "git"
     args: ["clone", "https://github.com/PaggieChen/apigee-cicd-demo.git"]
 
-  # Step 2: Store the secret as a JSON file
-  - name: "gcr.io/cloud-builders/bash"
-    id: store-secret
-    entrypoint: "bash"
-    args:
-      - "-c"
-      - |
-        # Save the secret content to a JSON file
-        echo "$$SA" > /workspace/sa-key.json
-    secretEnv:
-      - SA
 
-  # Step 3: Deploy Configurations using Maven
+  - name: 'bash'
+    script: |
+      #!/usr/bin/env bash
+      echo "$$SA" > /workspace/sa-key.json
+    secretEnv: ['SA']
+
+
+  # Step 2: Deploy Configurations using Maven
   - name: maven
     id: deploy
     dir: "apigee-cicd-demo/Mock-v1"  # Ensure we are in the correct directory
@@ -33,3 +29,7 @@ availableSecrets:
 logsBucket: "gs://paggie-test-bucket"
 
 timeout: "1200s"
+
+
+
+
