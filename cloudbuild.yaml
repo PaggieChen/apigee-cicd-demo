@@ -6,7 +6,7 @@ steps:
       - "-c"
       - |
         # Fetch the service account key from Secret Manager and store it locally
-        gcloud secrets versions access latest --secret="service-account-key" > /workspace/service-account-key.json
+        gcloud secrets versions access latest --secret="apigee-secret" > /workspace/service-account-key.json
         # Set the environment variable for Google Cloud authentication
         export GOOGLE_APPLICATION_CREDENTIALS="/workspace/service-account-key.json"
         # Authenticate using the service account key
