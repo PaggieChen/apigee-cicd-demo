@@ -3,7 +3,7 @@ steps:
   # Step 1: Clone the repository
   - name: "gcr.io/cloud-builders/git"
     entrypoint: "git"
-    args: ["clone", "https://github.com/PaggieChen/apigee-cicd-demo.git", "/workspace/repo"]
+    args: ["clone", "https://github.com/PaggieChen/apigee-cicd-demo.git"]
 
   # Step 2: Change directory to the project folder
   - name: "gcr.io/cloud-builders/mvn"
@@ -11,7 +11,7 @@ steps:
     args:
       - "-c"
       - |
-        cd /workspace/repo/apigee-cicd-demo && mvn clean install
+        cd /apigee-cicd-demo && mvn clean install
     id: clone-the-repo
   
 # Step 3: Install Maven dependencies
