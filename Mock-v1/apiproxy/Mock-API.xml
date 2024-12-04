@@ -2,7 +2,7 @@
 <APIProxy revision="1" name="Mock-API">
     <Basepaths>/v1/mock</Basepaths>
     <ConfigurationVersion majorVersion="4" minorVersion="0"/>
-    <Description>Apigee mock target service endpoint v3</Description>
+    <Description>Apigee mock target service endpoint v4</Description>
     <DisplayName>Mock-API</DisplayName>
     <Policies>
         <Policy>AM-Set-Headers</Policy>
