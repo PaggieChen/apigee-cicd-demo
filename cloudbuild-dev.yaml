@@ -17,7 +17,7 @@ steps:
   # Step 3: Deploy Configurations using Maven
   - name: maven
     id: deploy-proxy-with-maven
-    dir: "apigee-cicd-demo/Mock-v1"  # Ensure we are in the correct directory
+    dir: "apigee-cicd-demo/APIs"  # Ensure we are in the correct directory
     entrypoint: "bash"
     args: ['-c', 'mvn install -Ptest -Dorg=tw-rd-ca-paggie-chen-394703 -Denv=eval -Dapigee.config.options=update -Dfile=/workspace/sa-key.json']
     secretEnv: ['SA']
