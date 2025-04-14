@@ -19,7 +19,7 @@
                     "tokens": [
                         {
                             "xpath": "/ProxyEndpoint/HTTPProxyConnection/BasePath",
-                            "value": "/v1/mock"
+                            "value": "/v2/mock"
                         }
                     ]
                 }
@@ -55,7 +55,7 @@
                     "tokens": [
                         {
                             "xpath": "/ProxyEndpoint/HTTPProxyConnection/BasePath",
-                            "value": "/v1/mock"
+                            "value": "/v2/mock"
                         }
                     ]
                 }
