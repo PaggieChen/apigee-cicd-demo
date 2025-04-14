@@ -27,6 +27,6 @@ availableSecrets:
   - versionName: projects/609801163603/secrets/apigee-secret/versions/1
     env: 'SA'
 
-logsBucket: "gs://paggie-test-bucket"
+logsBucket: "gs://paggie-apigee-bucket"
 
 timeout: "1200s"
