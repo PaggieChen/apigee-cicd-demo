@@ -96,9 +96,9 @@
 <!-- This is where you add the environment specific properties under various profile names -->
  <profiles>
         <profile>
-            <id>test</id>
+            <id>dev</id>
             <properties>
-                <apigee.profile>test</apigee.profile>
+                <apigee.profile>dev</apigee.profile>
                 <apigee.hosturl>https://apigee.googleapis.com</apigee.hosturl>
                 <apigee.apiversion>v1</apigee.apiversion>
                 <apigee.org>${org}</apigee.org>
@@ -111,9 +111,9 @@
             </properties>
         </profile>
         <profile>
-            <id>prod</id>
+            <id>uat</id>
             <properties>
-                <apigee.profile>prod</apigee.profile>
+                <apigee.profile>uat</apigee.profile>
                 <apigee.hosturl>https://apigee.googleapis.com</apigee.hosturl>
                 <apigee.apiversion>v1</apigee.apiversion>
                 <apigee.org>${org}</apigee.org>

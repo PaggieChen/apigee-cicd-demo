@@ -1,14 +1,14 @@
 {
     "configurations": [
         {
-            "name": "test",
+            "name": "dev",
             "policies": [
                 {
                     "name": "AM-Set-Headers.xml",
                     "tokens": [
                         {
                             "xpath": "/AssignMessage/Set/Headers/Header[@name='ENV']",
-                            "value": "test"
+                            "value": "dev"
                         }
                     ]
                 }
@@ -37,14 +37,14 @@
             ]
         },
         {
-            "name": "prod",
+            "name": "uat",
             "policies": [
                 {
                     "name": "AM-Set-Headers.xml",
                     "tokens": [
                         {
                             "xpath": "/AssignMessage/Set/Headers/Header[@name='ENV']",
-                            "value": "prod"
+                            "value": "uat"
                         }
                     ]
                 }
