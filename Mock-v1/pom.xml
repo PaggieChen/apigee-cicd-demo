@@ -10,13 +10,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<parent>
 		<artifactId>parent-pom</artifactId>
-		<groupId>apigee</groupId>
+		<groupId>cloudmile-apigee</groupId>
 		<version>1.0</version>
-		<relativePath>../shared-pom.xml</relativePath>
+		<relativePath>../parent-pom/shared-pom.xml</relativePath>
 	</parent>
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>apigee</groupId>
+	<groupId>cloudmile-apigee</groupId>
 	<artifactId>mock</artifactId>
 	<version>1.0</version>
 	<name>Mock-v1</name>

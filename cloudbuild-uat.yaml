@@ -1,9 +1,10 @@
 steps:
-  # Step 1: Clone the repository
+  # Step 1: Clone the repository and checkout the "uat" branch
   - name: "gcr.io/cloud-builders/git"
     id: clone-repo
     entrypoint: "git"
-    args: ["clone", "https://github.com/PaggieChen/apigee-cicd-demo.git"]
+    args: [ "clone", "--branch", "uat", "--single-branch", "https://github.com/PaggieChen/apigee-cicd-demo.git" ]
+
 
   # Step 2: save the service account key from secret manager to local file
   - name: 'bash'
@@ -19,7 +20,7 @@ steps:
     id: deploy-proxy-with-maven
     dir: "apigee-cicd-demo/Mock-v1"  # Ensure we are in the correct directory
     entrypoint: "bash"
-    args: ['-c', 'mvn install -Ptest -Dorg=tw-rd-ca-paggie-chen-394703 -Denv=uat -Dapigee.config.options=update -Dfile=/workspace/sa-key.json']
+    args: ['-c', 'mvn install -P uat -Dorg=tw-rd-ca-paggie-chen-394703 -Denv=uat -Dapigee.config.options=update -Dfile=/workspace/sa-key.json']
     secretEnv: ['SA']
 
 availableSecrets:

@@ -18,7 +18,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>apigee</groupId>
+    <groupId>cloudmile-apigee</groupId>
     <artifactId>parent-pom</artifactId>
     <packaging>pom</packaging>
     <version>1.0</version>
@@ -111,9 +111,9 @@
             </properties>
         </profile>
         <profile>
-            <id>prod</id>
+            <id>uat</id>
             <properties>
-                <apigee.profile>prod</apigee.profile>
+                <apigee.profile>uat</apigee.profile>
                 <apigee.hosturl>https://apigee.googleapis.com</apigee.hosturl>
                 <apigee.apiversion>v1</apigee.apiversion>
                 <apigee.org>${org}</apigee.org>
