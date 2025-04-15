@@ -1,9 +1,10 @@
 steps:
-# Step 1: Clone the repository
+# Step 1: Clone the repository and checkout the "dev" branch
 - name: "gcr.io/cloud-builders/git"
   id: clone-repo
   entrypoint: "git"
-  args: [ "clone", "https://github.com/PaggieChen/apigee-cicd-demo.git" ]
+  args: [ "clone", "--branch", "dev", "--single-branch", "https://github.com/PaggieChen/apigee-cicd-demo.git" ]
+
 
 # Step 2: save the service account key from secret manager to local file
 - name: 'bash'
